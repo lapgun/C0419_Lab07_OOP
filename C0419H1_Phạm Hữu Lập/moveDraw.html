@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Move-Drow</title>
+</head>
+<body>
+<canvas id="canvas" width="1000px" height="500px" style="border: 1px solid #d3d3d3; background-color: #fae09d"></canvas>
+<script>
+let ctx = document.getElementById('canvas').getContext("2d");
+let canvas = document.getElementById('canvas');
+
+let x = 20, y = 20;
+let dx =3 , dy =2;
+let radius =20;
+function creatCircle() {
+    ctx.beginPath();
+    ctx.arc(x,y,20,0,Math.PI*2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+}
+function draw() {
+    let a =  canvas.width;
+    let b =  canvas.height;
+    ctx.clearRect(0, 0, a, b);
+    if (x < radius||x > a - radius){
+        dx = -dx;
+    }
+    if (y < radius||y > b-radius){
+        dy = -dy;
+    }
+    x += dx;
+    y += dy;
+    creatCircle();
+    requestAnimationFrame(draw);
+}
+draw();
+// setInterval( function () {
+//     ctx.clearRect(0,0,ctx.width,ctx.height);
+//     creatCircle();
+//     x += 2;
+//     y += 2;
+// },3000)
+</script>
+</body>
+</html>

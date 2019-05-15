@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cc-4</title>
+</head>
+<body>
+<canvas id="canvas" width="1368px" height="768px" style="border: 1px solid #d3d3d3 ;"></canvas>
+<script>
+    let Circle = function (x,y,radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    } 
+    function getRandoomHex() {
+        return Math.floor(Math.random()*255);
+    }
+    function getRandoomColor() {
+        let red = getRandoomHex();
+        let blue = getRandoomHex();
+        let black = getRandoomHex();
+        return "rgb(" + red + ',' + blue + ',' + black + ")";
+    }
+    function creatCircle() {
+        let ctx = document.getElementById('canvas').getContext("2d");
+        let radius = Math.floor(Math.random()*80);
+        let color = getRandoomColor();
+        let x = Math.random() * innerWidth;
+        let y = Math.random() * innerHeight;
+        let circle = new Circle(x,y,radius);
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, radius, 0, 2*Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+
+    }
+    function creatMultilCircle() {
+        for (let i = 0 ; i < 30; i++){
+            creatCircle();
+        }
+    }
+    creatMultilCircle();
+</script>
+</body>
+</html>

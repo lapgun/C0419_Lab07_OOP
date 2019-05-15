@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Temperature = function (C) {
+            this.C = C;
+            this.swapF = function () {
+                return this.C * 1.8 + 32;
+            };
+            this.swapK = function () {
+                return this.C + 273.15;
+            }
+        };
+        let temperature = new Temperature(5);
+        console.log(temperature.swapF());
+        console.log(temperature.swapK());
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cc-3</title>
+</head>
+<body>
+<canvas id="canvas" width="1368px" height="768px" style="border: 1px solid #d3d3d3 ;"></canvas>
+<script>
+let Circle = function (x,y,radius) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+}
+function getRandoomHex() {
+    return Math.floor(Math.random()*255);
+}
+function getRandoomColor() {
+    let blue = getRandoomHex();
+    let red = getRandoomHex();
+    let white = getRandoomHex();
+    return "rgb(" + red + "," + blue + "," + white +")";
+}
+function creatCircle() {
+    let ctx = document.getElementById('canvas').getContext("2d");
+    let radius = Math.floor(Math.random() * 80);
+    let  color = getRandoomColor();
+    let  circle = new Circle(500, 500 ,radius);
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, radius,0 ,2* Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+creatCircle()
+</script>
+</body>
+</html>
